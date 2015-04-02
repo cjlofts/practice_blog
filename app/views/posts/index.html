@@ -1,0 +1,7 @@
+<h1>Homepage</h1>
+
+<% @posts.each do |p| %>
+  <p><%= p.title %></p>
+  <%= button_to "Show Post" , post_path(p) , method: :get %>
+  <hr>
+<% end %>
