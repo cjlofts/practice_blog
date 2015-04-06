@@ -5,3 +5,37 @@
 <%= button_to "Edit" , edit_post_path(@post) , method: :get %>
 
 <%= button_to "Delete", post_path(@post) , method: :delete, data: {confirm: "Are you sure?"} %>
+
+<h2>Add A Comment</h2>
+
+<% if @comment.errors.any? %>
+  <ul>
+    <% @comment.errors.full_messeges.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%#= raise @post.inspect %>
+<%= form_for @comment, url: post_comments_path(@post) do |c| %>
+  <%= c.text_area :body, placeholder: "Write your comment here" %>
+  <br>
+  <%= c.submit %>
+<% end %>
+
+<h2>Comments</h2>
+
+<% @post.comments.each do |c| %>
+  <p><%= c.body %></p>
+  <%= link_to "Edit", edit_post_comment_path(@post, c) %>
+  |
+  <%= link_to "Delete", post_comment_path(@post, c), method: :delete, data: {confirm: "Are you sure?"} %>
+  <hr>
+<% end %>
+
+
+
+
+
+
+

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # get "/posts/edit/:id" => "posts#edit" , as: :edit_post
 
   resources :posts do
+    resources :comments
   end
 
 end
