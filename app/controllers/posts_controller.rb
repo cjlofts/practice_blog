@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user! , except: [:index, :show, :create]
   before_action :find_post , only: [:show, :edit, :update, :destroy]
 
   def index
@@ -11,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(require_params)
+    @post = current_user.posts.new(require_params)
 
     if @post.save
       redirect_to root_path

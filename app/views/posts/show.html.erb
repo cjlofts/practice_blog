@@ -2,9 +2,16 @@
 
 <p><%= @post.body %></p>
 
-<%= button_to "Edit" , edit_post_path(@post) , method: :get %>
+<p>Written By: <strong><%= @post.user.name_display %></strong><p>
 
-<%= button_to "Delete", post_path(@post) , method: :delete, data: {confirm: "Are you sure?"} %>
+<div>
+  <div class="show-edit">
+    <%= button_to "Edit" , edit_post_path(@post) , method: :get %>
+  </div>
+  <div class="show-delete">
+    <%= button_to "Delete", post_path(@post) , method: :delete, data: {confirm: "Are you sure?"} %>
+  </div>
+</div>
 
 <h2>Add A Comment</h2>
 
