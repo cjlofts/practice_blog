@@ -1,0 +1,10 @@
+
+<% if @like.present? && @like.persisted? %>
+<div class="like-button">
+  <%= link_to fa_icon("thumbs-up 2x"), post_like_path(@post, @like), method: :delete, remote: true %>
+</div>
+<% else %>
+<div class="like-button">
+  <%= link_to fa_icon("thumbs-o-up 2x"), post_likes_path(@post), method: :post, remote: true %>
+</div>
+<% end %>

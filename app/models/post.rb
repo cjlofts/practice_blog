@@ -2,6 +2,12 @@ class Post < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   belongs_to :user
 
+  has_many :likes, dependent: :destroy
+  has_many :users_who_liked, through: :likes, source: :user
+
+  has_many :stars, dependent: :destroy
+  has_many :users_who_starred, through: :stars, source: :user
+
   validates :title, presence: true
   validates :body, presence: true
   validates :user_id, presence: true
@@ -13,5 +19,7 @@ class Post < ActiveRecord::Base
       User.new(first_name: "No user available", last_name: "")
     end
   end
-end
 
+  scope :most_recent_first, lambda { order("updated_at DESC") }
+
+end

@@ -1,7 +1,12 @@
-<h1>Homepage</h1>
+<h2>Blog Posts</h2>
 
-<% @posts.each do |p| %>
-  <p><%= p.title %></p>
-  <%= button_to "Show Post" , post_path(p) , method: :get %>
-  <hr>
+<% @posts.most_recent_first.each do |post| %>
+<div class="blog-post">
+  <div class="titles-display-all">
+    <p><strong>Title: </strong><%= link_to post.title, post_path(post) , method: :get %></p>
+  </div>
+  <div class="likes-count">
+    <p>Likes: <strong><%= post.likes.count %></strong> | Stars: <strong><%= post.stars.count %></strong></p>
+  </div>
+</div>
 <% end %>

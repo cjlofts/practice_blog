@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :authenticate_user! , except: [:index, :show, :create]
+  before_action :authenticate_user! , except: [:index]
   before_action :find_post , only: [:show, :edit, :update, :destroy]
 
   def index
@@ -23,6 +23,8 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @like = @post.likes.find_by_user_id(current_user.id)
+    @star = @post.stars.find_by_user_id(current_user.id)
   end
 
   def edit
