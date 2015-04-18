@@ -1,0 +1,2 @@
+$("#edit-post-modal").modal("hide");
+$("#<%= dom_id(@post) %>").replaceWith("<%= j render partial: "post", locals: {post: @post} %>");

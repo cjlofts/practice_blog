@@ -31,10 +31,14 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(require_params)
-      redirect_to @post , notice: "Post Successfully Updated"
-    else
-      render :edit
+    respond_to do |format|
+      if @post.update(require_params)
+        format.html { redirect_to @post , notice: "Post Successfully Updated" }
+        format.js { render :update_succcess }
+      else
+        format.html { render :edit }
+        format.js { render :update_failure }
+      end
     end
   end
 

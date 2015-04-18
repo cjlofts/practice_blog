@@ -1,0 +1,16 @@
+<div id="<%= dom_id(@post) %>">
+  <h1><%= @post.title %></h1>
+
+  <p><%= @post.body %></p>
+
+  <p>Written By: <strong><%= @post.user.name_display %></strong> on <%= formatted_date(@post.updated_at) %> <p>
+
+  <div>
+    <div class="show-edit">
+      <%= button_to "Edit" , edit_post_path(@post), remote: true , method: :get, data: {toggle: "modal", target: "#edit-post-modal"} %>
+    </div>
+    <div class="show-delete">
+      <%= button_to "Delete", post_path(@post) , method: :delete, data: {confirm: "Are you sure?"} %>
+    </div>
+  </div>
+</div>
