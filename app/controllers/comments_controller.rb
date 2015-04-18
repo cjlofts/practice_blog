@@ -7,23 +7,28 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(comment_params)
     @comment.post = @post
-
-    if @comment.save
-      redirect_to post_path(@post), notice: "Comment Created!"
-    else
-      render "posts/show"
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to post_path(@post), notice: "Comment Created!" }
+        format.js { render :create_success }
+      else
+        format.html { render "posts/show" }
+        format.js { render :create_failure }
+      end
     end
   end
 
-
   def destroy
-    @comment.delete
-    redirect_to post_path(@post), notice: "Comment Deleted!"
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to post_path(@post), notice: "Comment Deleted!" }
+      format.js { render }
+    end
   end
 
   def edit
   end
-
+  
   def update
     if @comment.update(comment_params)
       redirect_to @post , notice: "Comment Successfully Updated"
