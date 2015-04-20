@@ -81,3 +81,7 @@
 .green-star {
   color: green;
 }
+
+.carousel-inner img {
+  margin: auto;
+}

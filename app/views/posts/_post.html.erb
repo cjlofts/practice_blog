@@ -3,6 +3,12 @@
 
   <p><%= @post.body %></p>
 
+  <%= simple_form_for @post, html: {class: "form-horizontal"} do |post| %>
+    <div class="checkbox-inline">
+      <%= post.association :categories, as: :check_boxes %>
+    </div>
+  <% end %>
+
   <p>Written By: <strong><%= @post.user.name_display %></strong> on <%= formatted_date(@post.updated_at) %> <p>
 
   <div>

@@ -8,6 +8,9 @@ class Post < ActiveRecord::Base
   has_many :stars, dependent: :destroy
   has_many :users_who_starred, through: :stars, source: :user
 
+  has_many :categorizations, dependent: :destroy
+  has_many :categories, through: :categorizations
+
   validates :title, presence: true
   validates :body, presence: true
   validates :user_id, presence: true
