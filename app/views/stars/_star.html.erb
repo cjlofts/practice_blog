@@ -1,0 +1,9 @@
+<% if @star.present? && @star.persisted? %>
+<div class="star-button">
+  <%= link_to fa_icon("star 2x"), post_star_path(@post, @star), method: :delete, remote: true %>
+</div>
+<% else %>
+<div class="star-button">
+  <%= link_to fa_icon("star-o 2x"), post_stars_path(@post), method: :post, remote: true %>
+</div>
+<% end %>

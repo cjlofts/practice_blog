@@ -10,6 +10,78 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
+
+ .sign-in {
+  float: right;
+ }
+
+ .header {
+  background-color: #dbd6d6;
+  border-bottom: 1px solid black;
+  padding: 5px 70px 5px 70px;
+ }
+
+ .show-edit {
+  float: left;
+  margin-right: 10px;
+ }
+
+.main {
+  background-color: #ede8e8;
+}
+
+.blog-post {
+  background-color: white;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.with-strike {
+  color: red;
+  text-decoration: line-through;
+}
+
+.display-blog-post {
+  background-color: white;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+
+.display-comments {
+  background-color: white;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.titles-display-all {
+  float:left;
+}
+
+.likes-count {
+  text-align: right;
+}
+
+.like-button {
+  margin-top: 10px;
+  float: left;
+}
+
+.star-button {
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
+.green-star {
+  color: green;
+}
+
+.carousel-inner img {
+  margin: auto;
+}

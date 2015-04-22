@@ -1,0 +1,43 @@
+<div class="display-blog-post">
+
+  <div class="post-for-modal">
+    <%= render partial: "/posts/post" %>
+  </div>
+
+  <div class="like">
+    <%= render partial: "/likes/like" %>
+  </div>
+
+  <div class="star">
+    <%= render partial: "stars/star" %>
+  </div>
+
+</div>
+
+<h3>Add A Comment</h3>
+
+<div class="comment_form">
+  <%= render partial: "comments/form" %>
+</div>
+
+<hr>
+
+<div class="comments">
+  <% @post.comments.each do |comment| %>
+    <%= render partial: "/comments/comment", locals: {comment: comment} %>
+  <% end %>
+<div>
+
+<div class="modal fade" id="edit-post-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Post Below</h4>
+      </div>
+      <div class="modal-body">
+          ...
+      </div>
+    </div>
+  </div>
+</div>

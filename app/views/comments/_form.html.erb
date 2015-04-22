@@ -1,0 +1,22 @@
+<% if @comment.errors.any? %>
+  <ul>
+    <% @comment.errors.full_messeges.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%#= raise @post.inspect %>
+<%= form_for [@post, @comment], remote: true, :html => {:class => "form-horizontal"} do |comment| %>
+  <div class="form-group">
+    <%= comment.label :body, "Comment:", class: "col-sm-1 control-label" %>
+    <div class="col-sm-10">
+      <%= comment.text_area :body, placeholder: "Write your comment here", class: "form-control", rows: "1" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-10">
+      <%= comment.submit "Submit", class: "btn btn-default" %>
+    </div>
+  </div>
+<% end %>

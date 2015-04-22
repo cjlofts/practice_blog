@@ -1,0 +1,13 @@
+<%= form_for [@post, @comment] do |c| %>
+
+  <% if @comment.errors.any? %>
+  <ul>
+    <% @comment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <% end %>
+
+  <p>Comment:<br><%= c.text_area :body %></p>
+  <%= c.submit "Submit" %>
+<% end %>
